@@ -7,14 +7,6 @@ import (
 )
 
 func main() {
-
-	// type user struct {
-	// 	id   int
-	// 	name string
-	// }
-
-	// var users []user
-
 	var users []gin.H
 
 	r := gin.Default()
