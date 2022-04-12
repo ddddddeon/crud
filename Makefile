@@ -1,6 +1,6 @@
 NAME=crud
 GO=/usr/local/go/bin/go
-VERSION=$$(git log --pretty=oneline -1 | awk '{print $1}' | cut -c 1-7)
+VERSION=$$(cat VERSION)
 .PHONY: $(NAME)
 
 $(NAME):
@@ -14,6 +14,7 @@ clean:
 	docker rmi $$(docker images -a --filter=dangling=true -q) -f
 
 build: $(NAME) prune
+	git log --pretty=oneline -1 | awk '{print }' | cut -c 1-7 > VERSION
 	docker build --tag dddeon/crud:$(VERSION) .
 
 push: 
