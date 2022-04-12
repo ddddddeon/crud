@@ -14,7 +14,7 @@ clean:
 	docker rmi $$(docker images -a --filter=dangling=true -q) -f
 
 build: $(NAME) prune
-	git checkout master; \
+	git checkout master; git pull origin master; \
 	git log --pretty=oneline -1 | awk '{print }' | cut -c 1-7 > VERSION; \
 	docker build --tag dddeon/crud:$(VERSION) .; \
 	git add VERSION; git commit -n -m "bump version to $(VERSION)"; \
