@@ -14,13 +14,13 @@ clean:
 	docker rmi $$(docker images -a --filter=dangling=true -q) -f
 
 build: $(NAME) prune
-	git checkout master; git pull origin master; \
 	git log --pretty=oneline -1 | awk '{print }' | cut -c 1-7 > VERSION; \
 	docker build --tag dddeon/crud:$(VERSION) .; \
-	git add VERSION; git commit -n -m "bump version to $(VERSION)"; \
-	git push origin master
 
 push: 
+	git checkout master; git pull origin master; \
+	git add VERSION; git commit -n -m "bump version to $(VERSION)"; \
+	git push origin master; \
 	docker push dddeon/crud:$(VERSION)
 
 pull: 
@@ -28,3 +28,10 @@ pull:
 
 prune:
 	docker system prune -f
+
+deploy:
+	@VER=$(cat VERSION); \
+	sed -i "s/\:[a-f0-9]\{7\}/\:${VER}/" kubernetes/crud.yaml; \
+	git add kubernetes/crud.yaml; \
+	git commit -n -m "bump version to ${VER}"; \
+	echo "Version bumped; push to master!"
