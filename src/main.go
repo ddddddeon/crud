@@ -13,7 +13,7 @@ func main() {
 	r.GET("/users", func(c *gin.Context) {
 		c.JSON(200, users)
 	})
-	// `hiiiiiiii
+	// `hiiiiiiiii
 
 	r.GET("/users/:id", func(c *gin.Context) {
 		id, err := strconv.Atoi(c.Param("id"))
