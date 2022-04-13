@@ -29,6 +29,7 @@ pull:
 prune:
 	docker system prune -f
 
+#test
 deploy:
 	@VER=$(cat VERSION); \
 	sed -i "s/\:[a-f0-9]\{7\}/\:${VER}/" kubernetes/crud.yaml; \
