@@ -16,11 +16,12 @@ spec:
     spec:
       containers:
         - name: crud
-          image: dddeon/crud:
+          image: dddeon/crud:ab4ed32
           ports:
             - containerPort: 8080
 
 ---
+# hi
 apiVersion: v1
 kind: Service
 metadata:
