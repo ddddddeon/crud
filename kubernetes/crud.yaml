@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: crud
-          image: dddeon/crud:ab4ed32
+          image: dddeon/crud:
           ports:
             - containerPort: 8080
 
