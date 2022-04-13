@@ -7,7 +7,7 @@ COPY go.sum ./
 
 RUN go mod download
 
-COPY main.go ./
+COPY src/main.go ./
 
 RUN go build -o ./crud-app
 

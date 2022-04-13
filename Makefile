@@ -4,7 +4,7 @@ VERSION=$$(cat VERSION)
 .PHONY: $(NAME)
 
 $(NAME):
-	$(GO) build -o bin/crud ./*.go
+	$(GO) build -o bin/crud ./src/*.go
 
 run: 
 	docker run -d -p 8080:8080 dddeon/crud:$(VERSION)
