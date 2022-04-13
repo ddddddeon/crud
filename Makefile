@@ -31,8 +31,7 @@ prune:
 
 #test
 deploy:
-	@VER=$(cat VERSION); \
-	sed -i "s/\:[a-f0-9]\{7\}/\:${VER}/" kubernetes/crud.yaml; \
+	@sed -i "s/\:[a-f0-9]\{7\}/\:$(VERSION)/" kubernetes/crud.yaml; \
 	git add kubernetes/crud.yaml; \
-	git commit -n -m "bump version to ${VER}"; \
+	git commit -n -m "bump version to $(VERSION)"; \
 	echo "Version bumped; push to master!"
